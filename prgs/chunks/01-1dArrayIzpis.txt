@@ -1,0 +1,34 @@
+var a : arr[10] char
+
+fun main(i:int) : int =
+    i = 0;
+    a[0] = 'H';
+    a[1] = 'e';
+    a[2] = 'l';
+    a[3] = 'l';
+    a[4] = 'o';
+    a[5] = ' ';
+    a[6] = 'w';
+    a[7] = 'o';
+    a[8] = 'r';
+    a[9] = 'l';
+    a[10] = 'd';
+    while(i<=11) do
+        putChar(a[i]);
+        i = i+1;
+        if(i == 11) then
+            a[11] = '!'
+        else
+            putChar(' ')
+        end
+    end;
+    newline();
+    new(int);
+    del(a)
+: 3
+
+
+fun putChar(c : char): void
+fun newline() : void =
+    putChar((10 : char))
+:none

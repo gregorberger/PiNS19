@@ -1,0 +1,9 @@
+fun f() : int = 
+    12345;
+    true;
+    false;
+    none;
+    null;
+    'b';
+    ' '
+: 0 

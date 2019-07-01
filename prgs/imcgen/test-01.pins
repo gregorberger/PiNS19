@@ -1,0 +1,5 @@
+var a : int
+
+fun main(b:int) : int =
+    a = 3
+:0

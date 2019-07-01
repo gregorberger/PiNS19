@@ -1,0 +1,244 @@
+# SUDOKU
+
+var debugP : bool
+typ stype: arr[9]arr[9]int
+
+fun main() : int =
+	debugP = true;
+	sudoku = generate();
+	printSudoku(sudoku);
+	newline();
+	if(solveSudoku(sudoku, 0)) then
+		putChar('S'); putChar('O'); putChar('L'); putChar('U'); putChar('T'); putChar('I'); putChar('O'); putChar('N'); putChar(':');
+		newline();
+		printSudoku(sudoku)
+	else
+		putChar('N'); putChar('O'); putChar('P'); putChar('E'); putChar('!')
+	end
+: 0 { where
+	var sudoku : ptr stype
+}
+
+fun solveSudoku(sudoku: ptr stype, n : int) : bool =
+	solved = false;
+	if(n < 81) then
+		if((@sudoku)[n / 9][n % 9] == 0) then
+			i = 1;
+			while(i < 10) do
+				(@sudoku)[n / 9][n % 9] = i;
+				if(check(sudoku, n / 9, n % 9)) then
+					solved = solveSudoku(sudoku, n + 1);
+					if(solved) then
+						i = 10 #break
+					end
+				end;
+				i = i + 1
+			end;
+			if(solved == false) then
+				(@sudoku)[n / 9][n % 9] = 0
+			end
+		else
+			solved = solveSudoku(sudoku, n + 1)
+		end
+	else
+		solved = checkAll(sudoku)
+	end
+: solved { where
+			var i : int
+			var solved : bool }
+
+fun checkAll(sudoku: ptr stype) : bool =
+	i = 0;
+	solved = true;
+	while(i < 9) do
+		j = 0;
+		while(j < 9) do
+			solved = check(sudoku, i, j);
+			if(solved == false) then
+				i = 9;
+				j = 9
+			end;
+			j = j + 1
+		end;
+		i = i + 1
+	end
+:solved { where var solved : bool var i : int var j : int}
+
+
+fun check(sudoku: ptr stype, i : int, j : int) : bool =
+	ok = true;
+	n = 0;
+	while(n < 10) do count[n] = 0; n = n + 1 end;
+	n = 0;
+	while(n < 9) do
+		count[(@sudoku)[i][n]] = count[(@sudoku)[i][n]] + 1;
+		if((@sudoku)[i][n] != 0) then
+			if(count[(@sudoku)[i][n]] > 1) then
+				n = 9;
+				ok = false
+			end
+		end;
+		n = n + 1
+	end;
+	if(ok) then
+		n = 0;
+		while(n < 10) do count[n] = 0; n = n + 1 end;
+		n = 0;
+		while(n < 9) do
+			count[(@sudoku)[n][j]] = count[(@sudoku)[n][j]] + 1;
+			if((@sudoku)[n][j] != 0) then
+				if(count[(@sudoku)[n][j]] > 1) then
+					n = 9;
+					ok = false
+				end
+			end;
+			n = n + 1
+		end
+	end;
+	if(ok) then
+		n = 0;
+		while(n < 10) do count[n] = 0; n = n + 1 end;
+		n = 0;
+		m = 0;
+		x = 3 * (i / 3);
+		y = 3 * (j / 3);
+		while(n < 3) do
+			while(m < 3) do
+
+				count[(@sudoku)[x + n][y + m]] = count[(@sudoku)[x + n][y + m]] + 1;
+				if((@sudoku)[x + n][y + m] != 0) then
+					if(count[(@sudoku)[x + n][y + m]] > 1) then
+						n = 3;
+						m = 3;
+						ok = false
+					end
+				end;
+				m = m + 1
+			end;
+			n = n + 1
+		end
+	end
+: ok { where var ok : bool
+			 var count : arr[10] int
+			 var n : int
+			 var m : int
+			 var x : int
+			 var y : int}
+
+fun printSudoku(sudoku: ptr stype) : void =
+	i = 0;
+	newline();
+	while(i < 9) do
+		j = 0;
+		if (i % 3 == 0) then
+			if(i != 0) then
+				printLine(9)
+			end
+		end;
+		putChar(' ');
+		while(j < 9) do
+			if (j % 3 == 0) then
+				if(j != 0) then
+					putChar('|');
+					putChar(' ')
+				end
+			end;
+			if((@sudoku)[i][j] == 0) then
+				putChar('.')
+			else
+				putInt((@sudoku)[i][j])
+			end;
+			putChar(' ');
+			j = j + 1
+		end;
+		newline();
+		i = i + 1
+	end
+:none { where   var i : int
+				var j : int }
+
+fun printLine(n: int) : void =
+	i = 0;
+	putChar(' ');
+	while(i < n) do
+		if (i % 3 == 0) then
+			if(i != 0) then
+				putChar('+');
+				putChar('-')
+			end
+		end;
+		putChar('-');
+		putChar('-');
+		i = i + 1
+	end;
+	newline()
+: none { where var i : int }
+
+fun debugPrint(i : int) : void =
+	if(debugP) then
+		putChar('!'); putChar('!'); putChar('!'); putChar(' '); putInt(i); newline()
+	end
+:none
+
+fun generate() : ptr stype =
+	sudoku = new ( stype );
+	i = 0;
+	while(i < 9) do
+		j = 0;
+		while (j < 9) do
+			(@sudoku)[i][j] = 0;
+			j = j + 1
+		end;
+		i = i + 1
+	end;
+	(@sudoku)[0][0] = 8;
+	(@sudoku)[0][2] = 5;
+	(@sudoku)[0][6] = 9;
+	(@sudoku)[1][1] = 9;
+	(@sudoku)[1][2] = 6;
+	(@sudoku)[1][4] = 5;
+	(@sudoku)[1][5] = 7;
+	(@sudoku)[1][8] = 1;
+	(@sudoku)[2][0] = 4;
+	(@sudoku)[2][4] = 9;
+	(@sudoku)[2][5] = 3;
+	(@sudoku)[2][8] = 8;
+	(@sudoku)[3][0] = 5;
+	(@sudoku)[3][2] = 9;
+	(@sudoku)[3][3] = 1;
+	(@sudoku)[3][7] = 8;
+	(@sudoku)[4][1] = 2;
+	(@sudoku)[4][4] = 7;
+	(@sudoku)[4][5] = 8;
+	(@sudoku)[4][6] = 5;
+	(@sudoku)[4][7] = 4;
+	(@sudoku)[4][8] = 9;
+	(@sudoku)[5][0] = 7;
+	(@sudoku)[5][2] = 8;
+	(@sudoku)[5][3] = 5;
+	(@sudoku)[5][6] = 1;
+	(@sudoku)[5][7] = 6;
+	(@sudoku)[5][8] = 3;
+	(@sudoku)[6][2] = 2;
+	(@sudoku)[6][5] = 1;
+	(@sudoku)[6][6] = 3;
+	(@sudoku)[6][7] = 9;
+	(@sudoku)[7][0] = 9;
+	(@sudoku)[7][2] = 1;
+	(@sudoku)[7][3] = 3;
+	(@sudoku)[7][4] = 4;
+	(@sudoku)[7][7] = 7;
+	(@sudoku)[7][8] = 6;
+	(@sudoku)[8][1] = 7;
+	(@sudoku)[8][5] = 2;
+	(@sudoku)[8][6] = 8
+: sudoku { where
+				var sudoku : ptr stype
+				var i : int
+				var j : int }
+
+fun putInt(i : int): void
+fun putChar(c : char): void
+fun newline() : void =
+	putChar((10 : char))
+:none

@@ -1,0 +1,6 @@
+fun f() : int = 
+    a[0];
+    a[0][0]
+: 0 { where
+    var a: arr[10] arr[10] int
+}    

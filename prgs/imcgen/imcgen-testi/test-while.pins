@@ -1,0 +1,5 @@
+fun f() : int = 
+    while true do
+        4
+    end
+: 0 

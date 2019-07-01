@@ -1,0 +1,30 @@
+var a: int
+var p : ptr void
+
+fun main() : int =
+    a = a + 1;
+    a = 3;
+    while @a > 3 do
+            if 3 % 2 == 0
+            then
+                p = a + a
+            else
+                p = a + a
+            end
+        end
+: a+1
+
+fun main2() : int =
+    a = a + 1;
+    a = 3;
+    main2();
+    while @a > 3 do
+            if 3 % 2 == 0
+            then
+                p = a + a
+            else
+                p = a + a
+            end
+        end
+: a+1
+

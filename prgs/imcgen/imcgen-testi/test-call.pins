@@ -1,0 +1,12 @@
+fun f(a : int) : int = 
+    g(1)
+: a { where
+    fun g(b : int) : int = 
+        g(1);
+        f(1)
+    : b { where
+        fun h(c : int) : int = 
+            f(1)
+        : c
+    }
+}

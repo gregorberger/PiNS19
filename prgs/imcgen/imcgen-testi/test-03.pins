@@ -1,0 +1,6 @@
+var x : int
+
+fun f(a:int) : int =
+    a;
+    a = a + 2
+: a

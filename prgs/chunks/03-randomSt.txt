@@ -1,0 +1,41 @@
+# RANDOM
+
+fun main(i:int) : int =
+    Random(10,4000);
+    i = 0;
+    while(i < 10) do
+        putInt(nextR());
+        println();
+        i = i+1
+    end
+: 0
+
+fun putInt(num:int):void
+fun putChar(c:char):void
+fun println() : void =
+    putChar((10 : char))
+:none
+
+
+fun Random(min:int, max:int):void =
+    Rmax = max;
+    Rmin = min;
+    R = 0;
+    R = nextR()
+: none
+
+fun nextR():int =
+    R = R+1;
+    i = 0;
+    rand = 0;
+    while(i<2) do
+        rand = rand+((Rmax-Rmin)%R*10);
+        Rmax = Rmax/2-R;
+        Rmin = Rmin*2+R;
+        i = i+1
+    end
+: rand { where var rand : int var i : int}
+
+var R : int
+var Rmax : int
+var Rmin : int

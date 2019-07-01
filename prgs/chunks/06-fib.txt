@@ -1,0 +1,20 @@
+fun putInt(x:int) : void
+fun putChar(x:char) : void
+
+
+fun fibb(n:int) : int =
+    if n <= 2 then res = 1
+    else
+         res = fibb(n - 1) + fibb(n - 2)
+
+    end
+    : res
+    { where
+        var res : int
+    }
+
+fun main() : void =
+    putInt(fibb(7));
+    putChar(' ')
+    : none
+

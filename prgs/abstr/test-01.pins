@@ -1,0 +1,27 @@
+
+
+fun onlyDefLulz(a:char, b:char) : bool
+
+fun kek(i:int, b:char) : int = 
+    m = i + b + 1 
+        : m { where var m:int }
+
+var a: int
+var b: char
+var i: int
+
+fun main() : int = 
+    a = 5;
+    b = (a : char);
+    i = 0;
+    x(x,y,z);
+    while i <= 10 do
+        i = i + 1;
+        if i == (3 + 3) then
+            b = b + 3 * 2;
+            b = b / 2
+        else
+            kek(i + 1, b)
+        end
+    end
+: j

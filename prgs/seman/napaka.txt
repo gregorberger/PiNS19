@@ -1,0 +1,18 @@
+var a: int
+var b: int
+var c: int
+
+fun f1(a : e, x : f, c : d) : f1 =
+    a + b + c + d + e + f + x + f1;
+    f1()
+: a { where
+    var a : bool
+    var b : b
+    typ e : bool
+    fun f1(i : x) : d =
+        a + b + c + d + e + f + x + f1
+    : a { where var a : int }
+}
+typ d: e
+typ e: int
+typ f: e

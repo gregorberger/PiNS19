@@ -1,0 +1,46 @@
+# include <stdio.h> # Test syntax for Pins
+
+    var operator : char
+    var firstNumber : int
+    var secondNumber:int
+    typ bla:bool
+
+fun testnafunkcija () : char
+
+fun testna2 ( balota : int, balota2: bool, test3:char) : ptr int = 2492 : randomneki
+
+
+fun inc1 ( n : int) : int = n = n+1 : n
+fun inc2 ( n:int) : int = m = n+1:m { where var m:int}
+fun inc2 ( n:int) : int = while true do
+  if count % 2 == 0
+  then
+    i1 = i2 + i3
+  else
+    i2 = i1 +i2
+  end;
+  if count % 2 == 0
+  then
+    a = -b
+  end
+end : x { where typ x:x }
+fun inc3 ( n : int) : int = while true do c = a + -b * a[-5] * new(int) - del(-1) -5 / 2 == 256 end : 'c'
+
+var seznam: arr[(32 : ( ptr stevilo2))[new (arr[ polje ( del (22*22), ime, priimek, (+belo : bool))] void)]] int
+
+var r1: int
+var r2: int
+var count: int
+
+fun fibb (n:int , x: bool) : int =
+    count = n;
+    res = -1+0+0+0 + 2;
+    while count > 2 do
+        if count % 2 == 0
+        then
+            r1 = r1 + r2
+        else
+            r2 = r1 + r2
+        end
+    end
+: x { where typ x : x }

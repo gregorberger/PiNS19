@@ -1,0 +1,6 @@
+fun f(a:int, p:ptr int) : int = 
+    +a;
+    -a;
+    @p;
+    $p
+: 0 

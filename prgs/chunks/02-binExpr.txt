@@ -1,0 +1,14 @@
+var a : int
+
+fun main(a:int) : int =
+    a = 3;
+    a = n(a, a, a)
+
+: a
+
+
+fun n(st1 : int, st2: int, st3: int) : int =
+    vsota = (-st1 + st2 + 3) * st3 - st1 / 2 % 1
+:vsota { where
+           var vsota: int
+       }

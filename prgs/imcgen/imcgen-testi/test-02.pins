@@ -1,0 +1,25 @@
+var a: int
+var p : ptr void
+
+fun main() : int =
+    a = a + 1;
+    a = 3;
+    main()
+: a
+
+fun f(a : int, b: int, c:int) : int = 
+	sum = f(a, b, c)
+: sum { where 
+	var sum: int
+	var array: arr [10] arr [10] int 
+	fun g(a: int, b: char, c: ptr int) : ptr void =
+		i = null
+	: i { where
+		var i : ptr void
+	}
+}
+
+fun g(a:int):int = 
+    a
+:a { where var b:int }
+	

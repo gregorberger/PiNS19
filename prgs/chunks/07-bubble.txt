@@ -1,0 +1,47 @@
+fun putInt(x:int) : void
+fun putChar(x:char) : void
+
+fun main() : void =
+    i = 0; j = 0; swapped = false;
+
+    nums[0] = 1;
+    nums[1] = 32;
+    nums[2] = 123;
+    nums[3] = 2;
+    nums[4] = 8;
+    nums[5] = -23;
+    nums[6] = 55;
+    nums[7] = -12312;
+    nums[8] = 32;
+    nums[9] = 10239120;
+
+    while (i < 9) do
+        swapped = false;
+        while (j < 9) do
+            if nums[j] > nums[j+1] then
+                swapped = true;
+                tmp = nums[j];
+                nums[j] = nums[j+1];
+                nums[j+1] = tmp
+            end;
+            j = j + 1
+        end;
+        i = i + 1;
+        j = 0
+    end;
+
+    i = 0;
+    while (i < 10) do
+        putInt(nums[i]);
+        putChar(' ');putChar(' ');putChar(' ');
+        i = i + 1
+    end
+
+    : none
+    { where
+       var nums : arr[10] int
+       var swapped : bool
+       var i : int
+       var j : int
+       var tmp : int
+    }
